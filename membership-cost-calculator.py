@@ -20,6 +20,7 @@ print("**************************")
 monthly_fee = 34.99
 annual_fee = 49.00
 initiation_fee = 99.00
+total_years = 1
 
 # Prompt to change defaults
 change_defaults = input("Would you like to change the default values? (Y/N): ").upper()
@@ -30,6 +31,7 @@ if change_defaults == "Y":
     monthly_fee = float(input("What is the monthly fee?: "))
     annual_fee = float(input("What is the annual fee?: "))
     initiation_fee = float(input("What is the initiation fee?: "))
+    total_years = int(input("How many years?: "))
 # If no or invalid, use defaults
 elif change_defaults == "N":
     print("Using default values (LA Fitness example)")
@@ -47,4 +49,19 @@ last_month_dues = monthly_fee
 print(f"Last month's dues: ${monthly_fee}")
 total_init_payment = initiation_fee + first_month_dues + last_month_dues
 print(f"Total due at signing: ---> ${round(total_init_payment,2)} <---")
+print("")
+total_first_year = total_init_payment + (monthly_fee * 11)
+print(f"The first year will cost: ${round(total_first_year,2)}")
+print("")
+total_second_year = (monthly_fee * 12)
+print(f"The second year will cost: ${round(total_second_year,2)}")
+print("")
+if total_years == 1:
+    total_cost = total_init_payment + (monthly_fee * 11)
+    print(f"The total cost for {total_years} year will be: ${round(total_cost,2)}")
+elif total_years > 1:
+    total_cost = total_init_payment + (monthly_fee * 11) + (monthly_fee * 12 * total_years)
+    print(f"The total cost for {total_years} years will be: ${round(total_cost,2)}")
+else:
+    print("Invalid input")
 print("")

@@ -17,37 +17,40 @@ print("MEMBERSHIP COST CALCULATOR")
 print("**************************")
 
 # Default values
-monthly_fee = 34.99
-annual_fee = 49.00
-initiation_fee = 99.00
+monthly_fee = 17.99
+annual_fee = 49.99
+initiation_fee = 59.00
 total_years = 1
 
-# Prompt to change defaults
-change_defaults = input("Would you like to change the default values? (Y/N): ").upper()
+# Prompt to change default fee values
+change_defaults = input("Would you like to use the default fees based on the Fitness 19 Basic plan? (Y/N): ").upper()
 print("")
 
-# If yes, set fee values
-if change_defaults == "Y":
+# If no, set fee values
+if change_defaults == "N":
     monthly_fee = float(input("What is the monthly fee?: "))
     annual_fee = float(input("What is the annual fee?: "))
-    initiation_fee = float(input("What is the initiation fee?: "))
+    initiation_fee = float(input("What is the initiation fee (also known as the Enrollment Fee)?: "))
     total_years = int(input("How many years?: "))
-# If no or invalid, use defaults
-elif change_defaults == "N":
-    print("Using default values (LA Fitness example)")
+    print("")
+# If yes, use defaults
+elif change_defaults == "Y":
+    print("Using default values (Fitness 19 Basic Plan)")
+    total_years = int(input("How many years?: "))
+# If invlid, use defaults
 else:
-    print("Invalid input. Using default values (LA Fitness example)")
+    print("Invalid input. Using default values (Fitness 19 Basic Plan)")
 
 # Print results
 print("")
 print(f"The monthly fee is: ${monthly_fee}")
 print(f"The annual fee is: ${annual_fee}")
-print(f"The initiation fee is: ${initiation_fee}")
+print(f"The initiation fee (also known as the Enrollment Fee) is: ${initiation_fee}")
 first_month_dues = monthly_fee
 print(f"First month's dues: ${monthly_fee}")
-last_month_dues = monthly_fee
-print(f"Last month's dues: ${monthly_fee}")
-total_init_payment = initiation_fee + first_month_dues + last_month_dues
+#last_month_dues = monthly_fee
+#print(f"Last month's dues: ${monthly_fee}")
+total_init_payment = initiation_fee + first_month_dues# + last_month_dues
 print(f"Total due at signing: ---> ${round(total_init_payment,2)} <---")
 print("")
 total_first_year = total_init_payment + (monthly_fee * 11)
